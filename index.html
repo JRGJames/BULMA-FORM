@@ -1,0 +1,253 @@
+<!-- Jaime Roselló Gómez -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONSTER HIGH</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                if (event.code === 'Escape') {
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+
+    <header>
+        <nav class="navbar is-dark" style="height: 5em;">
+            <div class="navbar-brand is-flex" style="height: 5em;">
+                <a href="" class="is-align-items-center">
+                    <img class="ml-5" src="Monster-High-logo.png" alt="" style="height: 4em;">
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+
+            <div id="navbar" class="navbar-menu navbar-end">
+
+                <a href="" class="navbar-item">RECEPTION</a>
+
+                <a href="" class="navbar-item">STUDENTS</a>
+
+                <a href="" class="navbar-item">CONTACT</a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">CHARACTERS</a>
+
+                    <div class="navbar-dropdown">
+                        <a href="" class="navbar-item has-text-black">DRACULAURA</a>
+                        <a href="" class="navbar-item has-text-black">CLEO DE NILE</a>
+                        <a href="" class="navbar-item has-text-black">FRANKIE STEIN</a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <a class="button boton-pricipal js-modal-trigger boton-pricipal"                        data-target="login">
+                        <strong>Login</strong>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="login" class="modal">
+            <div class="modal-background blur">
+            </div>
+
+            <div class="modal-content">
+                <div class="container">
+                    <div class="is-flex is-justify-content-center m-5">
+                        <div class="column is-three-fifths">
+                            <div class="box">
+                                <h1 class="title is-4 has-text-centered">Iniciar Sesión</h1>
+
+                                <form>
+                                    <div class="field">
+                                        <label class="label">Correo Electrónico</label>
+                                        <div class="control">
+                                            <input class="input" type="email" placeholder="draculaura@monster.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Contraseña</label>
+                                        <div class="control">
+                                            <input class="input" type="password" placeholder="********">
+                                        </div>
+                                    </div>
+
+                                    <div class="field pt-5">
+                                        <div class="control">
+                                            <button class="button boton-pricipal is-fullwidth has-text-weight-bold">Iniciar Sesión</button>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                            <button class="button is-outlined is-fullwidth">
+                                                <span class="icon">
+                                                    <i class="fab fa-google"></i>
+                                                </span>
+                                                <span>Iniciar con Google</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="control">
+                                            <button class="button is-outlined is-fullwidth">
+                                                <span class="icon">
+                                                    <i class="fab fa-facebook"></i>
+                                                </span>
+                                                <span>Iniciar con Facebook</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <p class="has-text-centered">
+                                ¿No tienes una cuenta? <a href="#">Regístrate</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+    </header>
+    <main class="pt-6">
+        <div class="container">
+            <div class="columns is-multiline is-desktop is-tablet is-mobile is-justify-content-space-evenly">
+                <div class="m-6 column is-one-quarter-desktop is-full-mobile is-full-tablet has-text-centered is-shadowless has-background-dark"
+                    style="border-radius: 100em 100em 3em 3em; min-width: 20em; max-width: 38em;">
+                    <div class="box p-5 m-3 has-background-grey-light" style="border-radius: 100em 100em 3em 3em;">
+                        <img src="franki.png" alt="" style="height: 15em;">
+                    </div>
+                    <div class="box p-5 m-3 has-background-grey-light">
+                        <h1 class="is-size-3 has-text-centered has-text-weight-bold">FRANKI STEIN</h1>
+                        <hr class="has-background-grey">
+                        <p class="has-text-justified">Frankie Stein es una creación de Monster High, y su historia gira
+                            en
+                            torno a ser la hija del monstruo de Frankenstein. Su singularidad radica en que es una
+                            adolescente recién creada, y su edad y personalidad reflejan su estado de "nueva vida". A
+                            nivel
+                            estético, Frankie tiene una apariencia distintiva con suturas visibles y una paleta de
+                            colores
+                            verde y blanco.</p>
+                    </div>
+                </div>
+
+                <hr class="has-background-grey">
+
+                <div class="m-6 column is-one-quarter-desktop is-full-mobile is-full-tablet has-text-centered is-shadowless has-background-dark"
+                    style="border-radius: 100em 100em 3em 3em; min-width: 20em; max-width: 38em;">
+                    <div class="box p-5 m-3 has-background-grey-light" style="border-radius: 100em 100em 3em 3em;">
+                        <img src="draculaura.png" alt="" style="height: 15em;">
+                    </div>
+                    <div class="box p-5 m-3 has-background-grey-light">
+                        <h1 class="is-size-3 has-text-centered has-text-weight-bold">DRACULAURA</h1>
+                        <hr class="has-background-grey">
+                        <p class="has-text-justified">Draculaura es conocida por ser la hija del Conde Drácula y ha sido
+                            retratada como una adolescente amigable y extrovertida. A diferencia de la mayoría de los
+                            vampiros, ella es vegetariana y no bebe sangre, lo que agrega un toque único a su personaje.
+                            Su
+                            apariencia se caracteriza por su tez pálida, cabello negro y rosa, y su amor por la moda.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="has-background-black is-hidden-desktop">
+
+                <div class="m-6 column is-one-quarter-desktop is-full-mobile is-full-tablet has-text-centered is-shadowless has-background-dark"
+                    style="border-radius: 100em 100em 3em 3em; min-width: 20em; max-width: 38em;">
+                    <div class="box p-5 m-3 has-background-grey-light" style="border-radius: 100em 100em 3em 3em;">
+                        <img src="cleo.webp" alt="" style="height: 15em;">
+                    </div>
+                    <div class="box p-5 m-3 has-background-grey-light">
+                        <h1 class="is-size-3 has-text-centered has-text-weight-bold">CLEO DE NILE</h1>
+                        <hr class="has-background-grey">
+                        <p class="has-text-justified">Cleo de Nile es la hija de la Mumia y desempeña un papel destacado
+                            en
+                            la franquicia Monster High. Su personaje se caracteriza por su elegancia, carácter fuerte y
+                            su
+                            conexión con la cultura egipcia. Visualmente, Cleo tiene una apariencia majestuosa, con
+                            vendajes
+                            de momia, joyas elaboradas y un estilo de moda que refleja su herencia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

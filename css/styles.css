@@ -1,0 +1,8 @@
+.boton-pricipal {
+    background-color: rgb(226, 43, 128) !important; 
+    border: none !important;
+}
+
+.blur {
+    backdrop-filter: blur(4px);
+}
