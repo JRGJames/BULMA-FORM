@@ -1,8 +1,30 @@
 .boton-pricipal {
-    background-color: rgb(226, 43, 128) !important; 
+    background-color: rgb(226, 43, 128) !important;
     border: none !important;
 }
 
 .blur {
     backdrop-filter: blur(4px);
+}
+
+.imag {
+    height: 15em;
+}
+
+.logo {
+    height: 4em;
+}
+
+.nav {
+    height: 5em;
+}
+
+.column-round {
+    border-radius: 100em 100em 3em 3em;
+    min-width: 20em;
+    max-width: 38em;
+}
+
+.box-round {
+    border-radius: 100em 100em 3em 3em !important;
 }
